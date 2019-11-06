@@ -10,15 +10,34 @@ namespace complete_me
     {
         static void Main(string[] args)
         {
-            Random slumpat = new Random(); 
-            int speltal = slumpat.Next(); 
-         
-            bool spela = true; 
+            Random slumpat = new Random();
+            int speltal = slumpat.Next();
+            string input;
+            int tal;
+            speltal = 5;
 
-            while (!spela)
+            bool spela = true;
+
+            while (spela)
             {
                 Console.Write("\n\tGissa på ett tal mellan 1 och 20: ");
-                int tal = Convert.ToInt32(Console.ReadLine());
+                input = Console.ReadLine();
+                if (input == "q" || input == "Q")
+                {
+                    Console.WriteLine("Du har valt att avsluta, Ha det!");
+                    spela = false;
+                    return;
+                }
+                try
+                {
+                    tal = Convert.ToInt32(input);
+
+                }
+                catch (System.Exception)
+                {
+                    Console.WriteLine("Du kan inte skriva det!");
+                    throw;
+                }
 
                 if (tal < speltal)
                 {
@@ -27,10 +46,10 @@ namespace complete_me
 
                 if (tal > speltal)
                 {
-                    Console.WriteLine("\tDet inmatade talet " + tal  " är för stort, försök igen.");
+                    Console.WriteLine("\tDet inmatade talet " + tal + " är för stort, försök igen.");
                 }
 
-                if (tal = speltal)
+                if (tal == speltal)
                 {
                     Console.WriteLine("\tGrattis, du gissade rätt!");
                 }
